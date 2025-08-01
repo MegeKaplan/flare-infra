@@ -10,6 +10,12 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - megebase_network
 
 volumes:
   postgres_data:
+
+networks:
+  megebase_network:
+    external: true
