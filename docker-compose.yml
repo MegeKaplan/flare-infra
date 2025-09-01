@@ -87,6 +87,20 @@ services:
     networks:
       - megebase_network
 
+  flare-graph-service:
+    build:
+      context: ../flare-graph-service
+      dockerfile: Dockerfile
+    container_name: flare_graph_service
+    ports:
+      - "${FLARE_GRAPH_SERVICE_PORT}:8080"
+    depends_on:
+      - neo4j
+    volumes:
+      - ../flare-graph-service/.env:/app/.env
+    networks:
+      - megebase_network
+
 volumes:
   postgres_data:
   neo4j_data:
