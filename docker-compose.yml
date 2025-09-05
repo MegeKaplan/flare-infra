@@ -101,6 +101,18 @@ services:
     networks:
       - megebase_network
 
+  flare-frontend:
+    build:
+      context: ../flare-frontend
+      dockerfile: Dockerfile
+    container_name: flare_frontend
+    ports:
+      - "${FLARE_FRONTEND_PORT}:3000"
+    volumes:
+      - ../flare-frontend/.env:/app/.env
+    networks:
+      - megebase_network
+
 volumes:
   postgres_data:
   neo4j_data:
